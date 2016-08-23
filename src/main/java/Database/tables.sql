@@ -1,0 +1,207 @@
+--------------------------------------------------------
+--  File created - Thursday-August-18-2016   
+--------------------------------------------------------
+--------------------------------------------------------
+--  DDL for Table APPLICANT
+--------------------------------------------------------
+
+  CREATE TABLE "JOBNET"."APPLICANT" 
+   (	"APPLICANTID" NUMBER(*,0), 
+	"FIRSTNAME" VARCHAR2(20 BYTE), 
+	"LASTNAME" VARCHAR2(20 BYTE), 
+	"PROFESSION" VARCHAR2(40 BYTE), 
+	"PICTURE" BLOB, 
+	"EMAIL" VARCHAR2(50 BYTE), 
+	"PHONE" VARCHAR2(20 BYTE), 
+	"ADDRESS" VARCHAR2(100 BYTE), 
+	"WEBSITE" VARCHAR2(40 BYTE), 
+	"LINKEDIN" VARCHAR2(70 BYTE), 
+	"GITHUBURL" VARCHAR2(50 BYTE), 
+	"PASSWORD" VARCHAR2(32 BYTE)
+   ) SEGMENT CREATION IMMEDIATE 
+  PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 
+ NOCOMPRESS LOGGING
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "USERS" 
+ LOB ("PICTURE") STORE AS SECUREFILE (
+  TABLESPACE "USERS" ENABLE STORAGE IN ROW CHUNK 8192
+  NOCACHE LOGGING  NOCOMPRESS  KEEP_DUPLICATES 
+  STORAGE(INITIAL 106496 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)) ;
+--------------------------------------------------------
+--  DDL for Table JOB
+--------------------------------------------------------
+
+  CREATE TABLE "JOBNET"."JOB" 
+   (	"JOBID" VARCHAR2(100 BYTE), 
+	"EMPLOYERNAME" VARCHAR2(50 BYTE), 
+	"EMPLOYERWEBSITE" VARCHAR2(50 BYTE), 
+	"JOBTITLE" VARCHAR2(50 BYTE), 
+	"JOBTYPE" VARCHAR2(50 BYTE), 
+	"DESCRIPTION" VARCHAR2(1000 BYTE), 
+	"REQUIREMENTS" VARCHAR2(1000 BYTE), 
+	"POSTEDBY" NUMBER(*,0), 
+	"DEADLINE" DATE, 
+	"LOCATION" VARCHAR2(50 BYTE), 
+	"SALARY" NUMBER(9,2), 
+	"CATEGORY" VARCHAR2(50 BYTE)
+   ) SEGMENT CREATION IMMEDIATE 
+  PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 
+ NOCOMPRESS LOGGING
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "USERS" ;
+--------------------------------------------------------
+--  DDL for Table RESUMES
+--------------------------------------------------------
+
+  CREATE TABLE "JOBNET"."RESUMES" 
+   (	"RESUMEID" NUMBER(*,0), 
+	"APPLICANTID" NUMBER(*,0), 
+	"RESUME" BLOB
+   ) SEGMENT CREATION DEFERRED 
+  PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 
+ NOCOMPRESS LOGGING
+  TABLESPACE "USERS" 
+ LOB ("RESUME") STORE AS SECUREFILE (
+  TABLESPACE "USERS" ENABLE STORAGE IN ROW CHUNK 8192
+  NOCACHE LOGGING  NOCOMPRESS  KEEP_DUPLICATES ) ;
+--------------------------------------------------------
+--  DDL for Table USERPROFILE
+--------------------------------------------------------
+
+  CREATE TABLE "JOBNET"."USERPROFILE" 
+   (	"PROFILEID" NUMBER(*,0), 
+	"EMAIL" VARCHAR2(32 BYTE), 
+	"PASSWORD" VARCHAR2(20 BYTE), 
+	"DATECREATED" DATE, 
+	"ROLE" VARCHAR2(20 BYTE)
+   ) SEGMENT CREATION IMMEDIATE 
+  PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 
+ NOCOMPRESS LOGGING
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "USERS" ;
+REM INSERTING into JOBNET.APPLICANT
+SET DEFINE OFF;
+Insert into JOBNET.APPLICANT (APPLICANTID,FIRSTNAME,LASTNAME,PROFESSION,EMAIL,PHONE,ADDRESS,WEBSITE,LINKEDIN,GITHUBURL,PASSWORD) values (21,'Abush','mekuria','applicant','user@mail.com','3478763245','111 Jay St','www.example.com','linkedin.com/abush','github.com/abush',null);
+Insert into JOBNET.APPLICANT (APPLICANTID,FIRSTNAME,LASTNAME,PROFESSION,EMAIL,PHONE,ADDRESS,WEBSITE,LINKEDIN,GITHUBURL,PASSWORD) values (5,'Asefaw','Mekuria','developer','admin@admin.com','3478763245','120 beach 19 street','www.asefaw.github.io','www.linkedin.com/asefaw','www.github.com/asefaw','admin');
+Insert into JOBNET.APPLICANT (APPLICANTID,FIRSTNAME,LASTNAME,PROFESSION,EMAIL,PHONE,ADDRESS,WEBSITE,LINKEDIN,GITHUBURL,PASSWORD) values (6,'Asefaw','Mekuria','developer','admin@admin.com','3478763245','120 beach 19 street','www.asefaw.github.io','www.linkedin.com/asefaw','www.github.com/asefaw','admin');
+REM INSERTING into JOBNET.JOB
+SET DEFINE OFF;
+Insert into JOBNET.JOB (JOBID,EMPLOYERNAME,EMPLOYERWEBSITE,JOBTITLE,JOBTYPE,DESCRIPTION,REQUIREMENTS,POSTEDBY,DEADLINE,LOCATION,SALARY,CATEGORY) values ('1bd7f75c-36e5-41fc-a65d-11c8a023b391','Yahoo','www.yahoo.com','Project Manager','Full time','IT project Manager','Masters Degrree',21,to_date('09-SEP-01','DD-MON-RR'),'Conencticut',50000,'Business');
+Insert into JOBNET.JOB (JOBID,EMPLOYERNAME,EMPLOYERWEBSITE,JOBTITLE,JOBTYPE,DESCRIPTION,REQUIREMENTS,POSTEDBY,DEADLINE,LOCATION,SALARY,CATEGORY) values ('721f03e8-70b5-4c87-b9c1-4df87aff4da4','DummyCompany','www.jobs.com','Developer','Full time','Goal driven and professional software and database developer with a solid understanding of Object- Oriented
+design and programming across multiple platforms. Who specializes in Java and Oracle technologies. Capable and
+always willing to learn new technologies. Highly organized and resourceful, coupled with effective multitasking
+skills and ability to accomplish projects under demanding and deadline-driven environments','This book shows us, the dangers could be living a life satisfied 
+with shallow stereotypes and 
+misconceptions. We saw on the play how Gallimard’s 
+singular desire for a submissive Oriental woman was 
+fulfilled only in his mind. It blinded him to every truth 
+about his mistress this show how people refusing even to accept the truth about Liling until he stood naked before him. 
+It first cost him his career, then his wife, then his dignity, then his lover, and finally his life. Even when he is confronted by the truth, Gallimard can only respond that he has “known, and been loved by, ',21,to_date('09-SEP-16','DD-MON-RR'),'New York',75000,null);
+Insert into JOBNET.JOB (JOBID,EMPLOYERNAME,EMPLOYERWEBSITE,JOBTITLE,JOBTYPE,DESCRIPTION,REQUIREMENTS,POSTEDBY,DEADLINE,LOCATION,SALARY,CATEGORY) values ('87b2c87a-7310-4486-9dc1-12fc7b9dcbed','CUNY','www.cuny.edu','Database Developer','Full time','db developer','BA Degree',21,to_date('10-SEP-01','DD-MON-RR'),'New York',50000,'IT');
+Insert into JOBNET.JOB (JOBID,EMPLOYERNAME,EMPLOYERWEBSITE,JOBTITLE,JOBTYPE,DESCRIPTION,REQUIREMENTS,POSTEDBY,DEADLINE,LOCATION,SALARY,CATEGORY) values ('8bc0e5e7-87d9-4f19-8e0e-95004f4a5e42','Google','www.google.com','Analyst','Full time','business analyst','Masters Degree',21,to_date('09-SEP-01','DD-MON-RR'),'NEew Jersey',60000,'Finance');
+REM INSERTING into JOBNET.RESUMES
+SET DEFINE OFF;
+REM INSERTING into JOBNET.USERPROFILE
+SET DEFINE OFF;
+Insert into JOBNET.USERPROFILE (PROFILEID,EMAIL,PASSWORD,DATECREATED,ROLE) values (21,'Abush@mail.com','abc123',to_date('01-JUL-16','DD-MON-RR'),'Applicant');
+Insert into JOBNET.USERPROFILE (PROFILEID,EMAIL,PASSWORD,DATECREATED,ROLE) values (42,'admin@admin.com','admin',to_date('12-JUL-16','DD-MON-RR'),'Faculty');
+Insert into JOBNET.USERPROFILE (PROFILEID,EMAIL,PASSWORD,DATECREATED,ROLE) values (61,'user@mail.com','abc123',to_date('04-JUL-16','DD-MON-RR'),'Applicant');
+--------------------------------------------------------
+--  DDL for Index APPLICANT_PK
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "JOBNET"."APPLICANT_PK" ON "JOBNET"."APPLICANT" ("APPLICANTID") 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "USERS" ;
+--------------------------------------------------------
+--  DDL for Index RESUMES_PK
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "JOBNET"."RESUMES_PK" ON "JOBNET"."RESUMES" ("RESUMEID") 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  TABLESPACE "USERS" ;
+--------------------------------------------------------
+--  DDL for Index USERPROFILE_UK1
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "JOBNET"."USERPROFILE_UK1" ON "JOBNET"."USERPROFILE" ("EMAIL") 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "USERS" ;
+--------------------------------------------------------
+--  DDL for Index USERPROFILE_PK
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "JOBNET"."USERPROFILE_PK" ON "JOBNET"."USERPROFILE" ("PROFILEID") 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "USERS" ;
+--------------------------------------------------------
+--  Constraints for Table APPLICANT
+--------------------------------------------------------
+
+  ALTER TABLE "JOBNET"."APPLICANT" MODIFY ("APPLICANTID" NOT NULL ENABLE);
+  ALTER TABLE "JOBNET"."APPLICANT" ADD CONSTRAINT "APPLICANT_PK" PRIMARY KEY ("APPLICANTID")
+  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "USERS"  ENABLE;
+--------------------------------------------------------
+--  Constraints for Table JOB
+--------------------------------------------------------
+
+  ALTER TABLE "JOBNET"."JOB" MODIFY ("JOBID" NOT NULL ENABLE);
+--------------------------------------------------------
+--  Constraints for Table RESUMES
+--------------------------------------------------------
+
+  ALTER TABLE "JOBNET"."RESUMES" ADD CONSTRAINT "RESUMES_PK" PRIMARY KEY ("RESUMEID")
+  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  TABLESPACE "USERS"  ENABLE;
+  ALTER TABLE "JOBNET"."RESUMES" MODIFY ("RESUMEID" NOT NULL ENABLE);
+--------------------------------------------------------
+--  Constraints for Table USERPROFILE
+--------------------------------------------------------
+
+  ALTER TABLE "JOBNET"."USERPROFILE" MODIFY ("PROFILEID" NOT NULL ENABLE);
+  ALTER TABLE "JOBNET"."USERPROFILE" ADD CONSTRAINT "USERPROFILE_PK" PRIMARY KEY ("PROFILEID")
+  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "USERS"  ENABLE;
+  ALTER TABLE "JOBNET"."USERPROFILE" ADD CONSTRAINT "USERPROFILE_UK1" UNIQUE ("EMAIL")
+  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "USERS"  ENABLE;
+  ALTER TABLE "JOBNET"."USERPROFILE" MODIFY ("EMAIL" NOT NULL ENABLE);
+--------------------------------------------------------
+--  Ref Constraints for Table JOB
+--------------------------------------------------------
+
+  ALTER TABLE "JOBNET"."JOB" ADD CONSTRAINT "JOB_APPLICANT_FK1" FOREIGN KEY ("POSTEDBY")
+	  REFERENCES "JOBNET"."APPLICANT" ("APPLICANTID") ENABLE;
+--------------------------------------------------------
+--  Ref Constraints for Table RESUMES
+--------------------------------------------------------
+
+  ALTER TABLE "JOBNET"."RESUMES" ADD CONSTRAINT "RESUMES_APPLICANT_FK1" FOREIGN KEY ("APPLICANTID")
+	  REFERENCES "JOBNET"."APPLICANT" ("APPLICANTID") ENABLE;

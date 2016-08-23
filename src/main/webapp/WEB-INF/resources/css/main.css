@@ -1,0 +1,112 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Jun 30, 2016, 8:38:37 PM
+    Author     : A
+*/ 
+a{
+    text-decoration: none;
+}
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;}  
+li {
+    float: left;}
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;}
+li a:hover {
+    background-color: #111;} 
+#authenticate{
+    float:right;
+}
+#jobMenu{
+    display: none;
+    position: absolute;
+} 
+#jobs:hover #jobMenu{
+    display: block;
+}
+#availableJobs #job-title{
+    color: blue;
+    font-size-adjust:  1;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+#availableJobs #applyForJobBtn{
+    font-size: 15pt;
+    font-weight: bolder;
+    
+}
+
+html {
+  height: 100%;
+  box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+body {
+  position: relative;
+  margin: 0;
+  padding-bottom: 6rem;
+  min-height: 100%;
+  font-family: "Helvetica Neue", Arial, sans-serif;
+}
+
+.demo {
+  margin: 0 auto;
+  padding-top: 64px;
+  max-width: 640px;
+  width: 94%;
+}
+
+.demo h1 {
+  margin-top: 0;
+}
+
+/**
+ * Footer Styles
+ */
+
+.footer {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 1rem;
+  background-color: #a9a9a9;
+  text-align: center;
+}
+
+#wrapper{
+    width: auto;
+    padding: 14px 26px; 
+}
+#availableJobs{
+     
+    width: 100%;
+}
+#job-filter{
+    padding: 14px 16px;
+}
+.submit{
+    margin-left: 15em;
+    height: 30px;
+    width: 70px;
+    font-weight: bold;
+        
+}
