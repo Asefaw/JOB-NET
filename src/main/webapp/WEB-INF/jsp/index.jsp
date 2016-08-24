@@ -18,19 +18,18 @@
         <div>
             <div id="mainmenu">
                 <ul>
-                    <li><a href="index.htm">Home</a></li> 
-                     
+                    <li><a href="index.htm">Home</a></li>  
                     <ul id="authenticate">
                         <li>${logout}</li>
                         <li><a href="login.htm">Sign In</a></li>
                         <li><a href="registration.htm">Sign up</a></li>
                     </ul>
                 </ul>
-            </div>
-             
+            </div> 
 
         </div>
-        <h1 align="center">Welcome to JobNet Where you can find your Dream Job.</h1> 
+                        <h1 align="center">Welcome to JobNet Where you can find your Dream Job.</h1> 
+         
         <div class="container"><br><br><br><br>
             <div class="left-container">
                 <h2> All of your dream jobs are here</h2>

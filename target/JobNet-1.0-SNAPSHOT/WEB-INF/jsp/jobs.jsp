@@ -49,7 +49,7 @@
                     </li>
                     <ul id="authenticate">
                         <li><a href="#">${name}</a></li>
-                        <li><a href="index.htm">Log Out</a></li> 
+                        <li><a href="logout">Log Out</a></li> 
                     </ul>
                 </ul>
         </nav>  

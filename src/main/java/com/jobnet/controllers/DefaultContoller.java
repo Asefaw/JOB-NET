@@ -51,6 +51,10 @@ public class DefaultContoller {
     
      
     
-    
+    @RequestMapping("/logout")
+    public String logout(ModelMap model){
+        model.put("message", "You have been Loged out");
+        return "success";
+    }
    
 }
