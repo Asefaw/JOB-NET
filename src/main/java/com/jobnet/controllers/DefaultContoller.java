@@ -13,6 +13,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -34,13 +35,22 @@ public class DefaultContoller {
         return "index";
     }
     
-//    @RequestMapping(value="/profile", method=RequestMethod.POST)
-//    public String getProfilePage(ModelMap model,@RequestParam String id ){
-//         
-////        List<Applicant> applicantProfile = applicantDAO.loadProfile(id);
-//       model.put("userProfile", id);
-//        return "profile";
-//    }
+    @RequestMapping(value="/profile/{id}")
+    public String getProfilePage(ModelMap model, @PathVariable("id") String id ){
+         
+       List<Applicant> userProfile = applicantDAO.loadUserProfile(id);
+       model.put("currentUser", userProfile);
+        return "profile";
+    }
+    
+    @RequestMapping(value = "/profile/update", method = RequestMethod.POST)
+    public String updateUser(ModelMap model, @ModelAttribute("applicant") Applicant applicant){
+        applicantDAO.update(applicant);
+        return "success";
+    }
+    
+     
+    
     
    
 }

@@ -19,7 +19,7 @@
             <div id="mainmenu">
                 <ul>
                     <li><a href="index.htm">Home</a></li> 
-                    <li><a href="applicant.htm">Applicant</a></li> 
+                    <li><a href="profile/${sessionScope.applicantID}"> Profile</a></li> 
                     <li id="jobs"><a href="jobs.htm ">Jobs</a>
                         <ul id="jobMenu">
                             <li><a href="jobSearch.htm">Search for a Job</a></li>

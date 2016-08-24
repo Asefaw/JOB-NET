@@ -39,7 +39,7 @@
         <nav id="mainmenu">
                 <ul>
                     <li><a href="index.htm">Home</a></li> 
-                    <li><a href="profile" onclick="$(this).closest('loadUserProfile').submit()"> Profile</a></li> 
+                    <li><a href="profile/${sessionScope.applicantID}"> Profile</a></li> 
                            
                     <li id="jobs"><a href="jobs.htm ">Job</a>
                         <ul id="jobMenu">
@@ -52,11 +52,7 @@
                         <li><a href="index.htm">Log Out</a></li> 
                     </ul>
                 </ul>
-        </nav> 
-                        <form:form id="loadUserProfile" method="POST" action="/profile">
-                            <input name="applicant_id" type="hidden" value="${sessionScope.applicantID}">
-                            <input type="submit">
-                        </form:form>
+        </nav>  
         <div id="wrapper">
             <h1>${status}</h1>
             <div id="availableJobs">

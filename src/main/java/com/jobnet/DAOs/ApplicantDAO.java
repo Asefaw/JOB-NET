@@ -101,7 +101,20 @@ public class ApplicantDAO {
      * @param applicant to be updated
      */
     public void update(Applicant applicant){
-        
+        String sql = "{call UPDATEPROFILE(?,?,?,?,?,?,?,?,?,?)}";
+          
+            jdbcTemplate.update(sql, 
+                applicant.getApplicantId(),
+                applicant.getFirstName(),
+                applicant.getLastName(),
+                applicant.getProfession(), 
+                applicant.getEmail(), 
+                applicant.getPhone(),
+                applicant.getAddress(),
+                applicant.getWebSite(),
+                applicant.getLinkedIn(),
+                applicant.getGitHubUrl()
+            ); 
     }
     
     /**
@@ -126,6 +139,7 @@ public class ApplicantDAO {
                 applicant.setEmail(rst.getString("email"));
                 applicant.setPassword(rst.getString("password"));
                 applicant.setPhone(rst.getString("phone"));
+                applicant.setAddress(rst.getString("address"));
                 applicant.setProfession(rst.getString("profession"));
                 applicant.setWebSite(rst.getString("website"));
                 applicant.setLinkedIn(rst.getString("linkedin"));
@@ -140,8 +154,8 @@ public class ApplicantDAO {
  /*authenticateUser(
    will be used to authentica users for credential
    */
-    public List<Applicant> loadProfile(int id){
-        String sql = "SELECT * FROM applicant where applicantid='"+id+"'";
+     public List<Applicant> loadUserProfile(String id){
+        String sql = "SELECT * FROM applicant where applicantid='"+Integer.parseInt(id)+"'";
         List<Applicant> listApplicant = jdbcTemplate.query(sql, new RowMapper<Applicant>(){
             @Override
             public Applicant mapRow(ResultSet rst, int i) throws SQLException {
@@ -152,6 +166,7 @@ public class ApplicantDAO {
                 applicant.setEmail(rst.getString("email"));
                 applicant.setPassword(rst.getString("password"));
                 applicant.setPhone(rst.getString("phone"));
+                applicant.setAddress(rst.getString("address"));
                 applicant.setProfession(rst.getString("profession"));
                 applicant.setWebSite(rst.getString("website"));
                 applicant.setLinkedIn(rst.getString("linkedin"));

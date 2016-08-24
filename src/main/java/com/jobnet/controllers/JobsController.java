@@ -33,7 +33,7 @@ public class JobsController extends AbstractController{
     JobDAO jobDAO;
     
     @Override
-     @RequestMapping(value="/jobs",method = RequestMethod.GET)
+     @RequestMapping(value="/jobs", method = RequestMethod.GET)
     protected ModelAndView handleRequestInternal(HttpServletRequest hsr, HttpServletResponse hsr1) throws Exception {
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     
