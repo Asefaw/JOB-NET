@@ -27,8 +27,10 @@
                 </ul>
             </div>
         <h4>User Login.</h4>  <h3>Welcome ${currentUser}</h3>
+        <h1 align="center" style="color: green">${message}</h1>
         <form:form method="post" name="loginForm">
             <fieldset>
+                 
                 <legend><b>LogIn Information</b></legend>
                 <table>
                     <tr><td>User Name: </td><td><input name="userName" type="text"></td></tr>

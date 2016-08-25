@@ -37,7 +37,7 @@ public class JobPostController {
          return "jobpost";
      }
      @RequestMapping(method = RequestMethod.POST)
-     public String loadPage(ModelMap modelMap, @ModelAttribute("job") @Valid Job job){
+     public String loadPage(ModelMap modelMap, @ModelAttribute("job")  Job job){
          
          /** if job is saved to database successfully, 
           * return and show job posted if not
