@@ -20,12 +20,11 @@
         <div>
             <div id="mainmenu">
                 <ul>
-                    <li><a href="index.htm">Home</a></li> 
+                    <li><a href="<c:url value='/index' />">Home</a></li> 
                     <li><a href="profile/${sessionScope.applicantID}"> Profile</a></li> 
-                    <li><a href="jobs.htm ">Jobs</a></li>
-                    <ul id="authenticate">
-                        <li><a href="login.htm">Sign In</a></li>
-                        <li><a href="register.htm">Sign up</a></li>
+                    <li><a href="<c:url value='/jobs' />">Jobs</a></li>
+                    <ul id="authenticate"> 
+                        <li><a href="<c:url value='/index' />">Log Out</a></li>
                     </ul>
                 </ul>
             </div> <br><br>
