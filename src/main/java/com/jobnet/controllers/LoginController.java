@@ -63,7 +63,7 @@ public class LoginController {
             model_map.put("filteredJobs", filteredJobs);
             request.getSession().setAttribute("name", name);
             request.getSession().setAttribute("email", email);            
-            return "jobs";
+            return "redirect:/jobs";
         }else{
             model_map.put("error", "Invalid UserName or Password");
             return "login";

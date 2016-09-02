@@ -42,10 +42,12 @@
                             <tr><td>Profession: </td><td><input name="profession" type="text" value="${user.profession}"></td></tr>
                             <tr><td>Web Site: </td><td><input name="webSite" type="text" value="${user.webSite}"></td></tr>
                             <tr><td>LinkedIn: </td><td><input name="linkedIn" type="text" value="${user.linkedIn}"></td></tr>
-                            <tr><td>GitHub URL: </td><td><input name="gitHubUrl" type="text" value="${user.gitHubUrl}"></td></tr>  
+                            <tr><td>GitHub URL: </td><td><input name="gitHubUrl" type="text" value="${user.gitHubUrl}"></td></tr
+                            <tr><td> <input type="hidden" name="applicantId" value="${sessionScope.applicantID}"></td></tr>
                             <tr><td colspan="2" align="right" ><input type="submit" value="Update"></td></tr> 
                         </c:forEach>
                     </table>
+                    <a href="<c:url value="/resume" />"> Add Resume</a>
                         <div style="color:red">${error}</div>
                 </fieldset>
             </form:form>

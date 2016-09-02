@@ -41,7 +41,9 @@ public class registrationController {
     
     @RequestMapping(method=RequestMethod.POST)
     public String processForm(ModelMap modelMap,@ModelAttribute("applicant")  Applicant applicant){ 
-         applicantDAO.save(applicant);return "welcome";
+        modelMap.put("status", "Registered Succssesfully");
+         applicantDAO.save(applicant);
+         return "redirect:/login";
        /* if(applicantDAO.save(applicant)){
             modelMap.put("status", "Succsses");
             return "welcome";

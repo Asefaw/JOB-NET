@@ -21,6 +21,8 @@ import org.springframework.dao.DataAccessException;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
+import org.springframework.web.multipart.MultipartResolver;
+import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 
 /**
  *
@@ -28,11 +30,12 @@ import org.springframework.jdbc.core.RowMapper;
  */
 public class ApplicantDAO {
     private JdbcTemplate jdbcTemplate;
+    private MultipartResolver multipartRsolver;
 
     public ApplicantDAO(DataSource dataSource) {
        this.jdbcTemplate = new JdbcTemplate(dataSource);  
-    }
-
+       
+    } 
     /**
      * default Constructor
      
@@ -118,11 +121,12 @@ public class ApplicantDAO {
     }
     
     /**
-     * @param applicantID
+     * @param id
      * @param resume 
      */
-    public void updateResume(String applicantID, File resume){
-        
+    public void updateResume(String id, byte[] resume){
+        String sql = "{call addresume(?,?)}";
+        jdbcTemplate.update(sql,Integer.parseInt(id),resume);
     }
     /*authenticateUser(
    will be used to authentica users for credential

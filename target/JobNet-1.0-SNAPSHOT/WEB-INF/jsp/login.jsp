@@ -27,6 +27,7 @@
                 </ul>
             </div>
         <h4>User Login.</h4>  <h3>Welcome ${currentUser}</h3>
+        <h1 align="center" style="color: green">${status}</h1><br>
         <h1 align="center" style="color: green">${message}</h1>
         <form:form method="post" name="loginForm">
             <fieldset>

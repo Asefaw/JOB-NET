@@ -8,10 +8,14 @@ package com.jobnet;
 import com.jobnet.DAOs.ApplicantDAO;
 import com.jobnet.DAOs.JobDAO;
 import javax.sql.DataSource;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
+import org.springframework.web.multipart.MultipartResolver;
+import org.springframework.web.multipart.commons.CommonsMultipartResolver;
+import org.springframework.web.multipart.support.StandardServletMultipartResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
@@ -53,6 +57,23 @@ public class Config extends WebMvcConfigurerAdapter {
         return dataSource;
     } 
     
+    // Configuring Multipart resolver for Upload file
+    
+//    @Bean
+//    public CommonsMultipartResolver multipartResolver() {
+//        return new CommonsMultipartResolver();
+//    }
+     
+    @Bean(name="multipartResolver")
+    public MultipartResolver getMultiPartResolver(){
+        return new StandardServletMultipartResolver();
+//        CommonsMultipartResolver multipartResolver = new CommonsMultipartResolver();
+//     
+//        multipartResolver.setMaxUploadSize(20972520);
+//        multipartResolver.setMaxInMemorySize(1048576);
+//        return multipartResolver;
+    }
+    
     @Bean
     public JobDAO getJobDAO(){
         return new JobDAO(this.getDataSource());
@@ -62,5 +83,7 @@ public class Config extends WebMvcConfigurerAdapter {
     public ApplicantDAO getApplicantDAO(){
         return new ApplicantDAO(this.getDataSource());
     }
+     
+    
      
 }

@@ -10,6 +10,7 @@ import javax.servlet.ServletException;
 import javax.servlet.ServletRegistration.Dynamic;
 import org.springframework.web.WebApplicationInitializer;
 import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;
+import org.springframework.web.multipart.MultipartResolver;
 import org.springframework.web.servlet.DispatcherServlet;
 
 /**
@@ -26,7 +27,7 @@ public class WebInitializer implements WebApplicationInitializer{
         ctx.setServletContext(sc);
         Dynamic servlet = sc.addServlet("dispatcher", new DispatcherServlet(ctx));
         servlet.addMapping("/","*.htm"); 
-        servlet.setLoadOnStartup(1);
+        servlet.setLoadOnStartup(1); 
     }
     
 }

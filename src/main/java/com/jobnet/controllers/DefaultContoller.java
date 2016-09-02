@@ -10,6 +10,8 @@ import com.jobnet.DAOs.JobDAO;
 import com.jobnet.business.classes.Applicant;
 import com.jobnet.business.classes.Job;
 import java.util.List;
+import javax.servlet.annotation.MultipartConfig;
+import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -18,12 +20,16 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
 /**
  *
  * @author abush
  */
+@MultipartConfig 
 @Controller
+@RequestMapping("/")
 public class DefaultContoller {
     
     @Autowired JobDAO jobDAO;
@@ -55,6 +61,24 @@ public class DefaultContoller {
     public String logout(ModelMap model){
         model.put("message", "You have been Loged out");
         return "success";
+    }
+    
+    @RequestMapping("/resume")
+    public String Resume(){ 
+        return "resume";
+    }
+    
+    @RequestMapping(value="/addresume", method = RequestMethod.POST)
+    public String updateResume(HttpServletRequest request,ModelMap model, CommonsMultipartFile resume, @RequestParam("applicantId") String id ){
+        if(resume != null){
+            applicantDAO.updateResume(id, resume.getBytes());
+            model.put("message", "Profile Updated");
+        return "resume";
+        }else{
+            model.put("error", "Error while processing form");
+            return "resume";
+        }
+         
     }
    
 }

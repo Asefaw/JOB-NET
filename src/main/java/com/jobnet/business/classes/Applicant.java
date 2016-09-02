@@ -27,6 +27,7 @@ public class Applicant {
     private String webSite;
     private String linkedIn;
     private String gitHubUrl; 
+    private Byte resume;
 
     /**
      * @return the firstName
@@ -182,6 +183,20 @@ public class Applicant {
      */
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    /**
+     * @return the resume
+     */
+    public Byte getResume() {
+        return resume;
+    }
+
+    /**
+     * @param resume the resume to set
+     */
+    public void setResume(Byte resume) {
+        this.resume = resume;
     }
     
 }
