@@ -37,17 +37,17 @@
     <body> 
         <nav id="mainmenu">
                 <ul>
-                    <li><a href="index.htm">Home</a></li> 
-                    <li><a href="applicant.htm">Profile</a></li> 
-                    <li id="jobs"><a href="jobs.htm ">Job</a>
+                    <li><a href="index">Home</a></li> 
+                    <li><a href="profile">Profile</a></li> 
+                    <li id="jobs"><a href="jobs">Job</a>
                         <ul id="jobMenu">
-                            <li><a href="jobSearch.htm">Search for a Job</a></li>
-                            <li><a href="jobpost.htm">Post a Job</a></li>
+                            <li><a href="jobSearch">Search for a Job</a></li>
+                            <li><a href="jobpost">Post a Job</a></li>
                         </ul>
                     </li>
-                    <ul id="authenticate">
+                    <ul id="authenticate"> 
+                        <li><a href="index">Log Out</a></li> 
                         <li><a href="#">${name}</a></li>
-                        <li><a href="index.htm">Log Out</a></li> 
                     </ul>
                 </ul>
         </nav> 

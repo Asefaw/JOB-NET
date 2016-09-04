@@ -28,7 +28,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
  * @author Asefaw Mekuria
  */
 @Controller
-@RequestMapping("login")
+@RequestMapping("/login")
 @SessionAttributes("user")
 public class LoginController {
      @Autowired

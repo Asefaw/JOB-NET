@@ -80,5 +80,11 @@ public class DefaultContoller {
         }
          
     }
+    @RequestMapping("/index3")
+    public String getIndex(ModelMap modelMap){
+        List<Job> topFive = jobDAO.getTopFiveJobs();
+        modelMap.put("topFive",topFive);
+        return "index3";
+    }
    
 }

@@ -1,12 +1,12 @@
 com\jobnet\controllers\JobPostController.class
 com\jobnet\DAOs\JobDAO$1.class
 com\jobnet\business\classes\Employer.class
-com\jobnet\controllers\registrationController.class
 com\jobnet\business\classes\Job.class
+com\jobnet\controllers\registrationController.class
 com\jobnet\WebInitializer.class
 com\jobnet\business\classes\Employee.class
-com\jobnet\DAOs\JobDAO$2.class
 com\jobnet\DAOs\ApplicantDAO.class
+com\jobnet\DAOs\JobDAO$2.class
 com\jobnet\controllers\JobsController.class
 com\jobnet\DAOs\UserProfileDAO.class
 com\jobnet\business\classes\Applicant.class

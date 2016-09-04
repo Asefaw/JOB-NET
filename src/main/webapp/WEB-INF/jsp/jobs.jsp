@@ -1,64 +1,80 @@
-<%-- 
-    Document   : jobs
-    Created on : Jun 15, 2016, 1:32:36 PM
-    Author     : tmeku4692
---%>
-
-<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
-<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
+<html lang="en">
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+ 
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
-<c:set var="applicant_id" value="${sessionScope.applicantID}"/>
-<html>
-    <head>
-        <spring:url value="/resources/css/main.css" var="main" />
-        <spring:url value="/resources/css/bootstrap-theme.min.css" var="bootstrap-min" />
-        <spring:url value="/resources/css/bootstrap-theme.css" var="bootstrap-min-theme-css" />
-        <spring:url value="/resources/css/bootstrap.css" var="bootstrap-css" />
-        <spring:url value="/resources/css/bootstrap.min.css" var="bootstrap-min-css" />
-        
-        
-        <spring:url value="/resources/js/bootstrap.js" var="bootstrap-js" />
-        <spring:url value="/resources/js/bootstrap.min.js" var="bootstrap-min-js" />
-        <spring:url value="/resources/js/npm.js" var="bootstrap-npm-js" />
-        <spring:url value="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js" var="jquery-api" />
-        <link href="${bootstrap-min-theme-css}" rel="stylesheet" />
-        <link href="${bootstrap-css}" rel="stylesheet" />
-        <link href="${bootstrap-min}" rel="stylesheet" />
-        <link href="${bootstrap-min-css}" rel="stylesheet" />
-        
-        <script src="${jquery-api}"></script>
-        <script src="${bootstrap-js}"> </script>
-        <script src="${bootstrap-min-js}"></script>
-        <script src="${bootstrap-npm-js}"></script>
-        <link href="${main}" rel="stylesheet" />
-        <title>Jobs Page</title> 
-    </head>
-    <body> 
-        <nav id="mainmenu">
-                <ul>
-                    <li><a href="index.htm">Home</a></li> 
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Job-Net</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="css/heroic-features.css" rel="stylesheet">
+
+    
+        <spring:url value="/resources/css/bootstrap.min.css" var="bootstrap" />
+        <spring:url value="/resources/css/heroic-features.css" var="index" />
+        <link href="${index}" rel="stylesheet" />
+        <link href="${bootstrap}" rel="stylesheet" /> 
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">JOB-NET</a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                     <li><a href="index">Home</a></li> 
                     <li><a href="profile/${sessionScope.applicantID}"> Profile</a></li> 
                            
-                    <li id="jobs"><a href="jobs.htm ">Job</a>
+                    <li id="jobs"><a href="jobs ">Job</a>
                         <ul id="jobMenu">
-                            <li><a href="jobSearch.htm">Search for a Job</a></li>
-                            <li><a href="jobpost.htm">Post a Job</a></li>
+                            <li><a href="jobs">Search for a Job</a></li>
+                            <li><a href="jobpost">Post a Job</a></li>
                         </ul>
-                    </li>
-                    <ul id="authenticate">
-                        <li><a href="#">${name}</a></li>
-                        <li><a href="logout">Log Out</a></li> 
-                    </ul>
+                    </li> 
+                    
                 </ul>
-        </nav>  
-        <div id="wrapper">
-            <h1>${status}</h1>
-            <div id="availableJobs">
-                <h2>Available Jobs</h2> 
-                 <div id="job-filter">
-                <h3>Filter Jobs</h3> 
+                <ul class="authentication">
+                    <li class="auth">${logout}</li> 
+                    <li class="authentication"><a href="index">Log Out</a></li>  
+                    <li class="authentication"><a href="profile">${name}</a></li> 
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+
+    <!-- Page Content -->
+    <div class="container">
+
+        <!-- Jumbotron Header -->
+        <h2>Please fill all information and Submit when you are done</h2>
+        <header class="jumbotron hero-spacer">  
+            <h3>Filter Jobs</h3> 
                     <form:form method="POST">
                         By Category  
                         <select name="category" >
@@ -77,10 +93,9 @@
                         OR Enter Key Word &ensp;&ensp;<input type="text" name="keyWord" placeholder="Key Word">
                         &ensp;&ensp;<input type="submit" value="Update"> 
                         &ensp;&ensp;<a href="jobs.htm ">Show All</a>
-                    </form:form> <br>  
-            </div>
+                    </form:form> <br>   
                     <c:forEach var="job" items="${allJobs}" varStatus="status">                       
-                        <a id="job-title" href="#">${job.jobTitle}</a>
+                        <h2><a id="job-title" href="#">${job.jobTitle}</a></h2>
                         <p><b>Employer: </b>${job.employerName}</p>
                         <p><b>Location </b>${job.location}</p>
                         <p><b>Salary </b>${job.salary}</p>
@@ -88,11 +103,47 @@
                         <p><b>Job Description: </b><br><p>${job.jobDescription}</p>
                         <b>Job Requirements: </b><br><p>${job.requirements}</p>
                         <p><b>Application Deadline: </b>${job.applicationDeadline}</p>
-                        <p id="applyForJobBtn"><a href="#">Apply Here</a></p>
-                </c:forEach> 
+                        <a href="login" class="btn btn-primary">Apply Here</a> <br><br>
+                </c:forEach>  
+        </header>
+
+        <hr> 
+        <!-- /.row -->
+
+        <!-- Page Features -->
+        <div class="row text-center">
+
+            <div class="col-md-3 col-sm-6 hero-feature">
+                <div class="thumbnail"> 
+                    <div class="caption"> 
+                             
+                    </div>
+                </div>
+            </div> 
+             
+
+        </div> 
+        <!-- /.row -->
+
+        <hr>
+        <!-- Footer -->
+        <footer>
+            <div class="row">
+                <div class="col-lg-12">
+                    <p>Copyright &copy; JOB-NET 2016</p>
+                </div>
             </div>
-            
-        </div>
-            <%@ include file="footer.html" %>
-    </body>
-</html> 
+        </footer>
+
+    </div>
+    <!-- /.container -->
+
+    <!-- jQuery -->
+    <script src="js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+
+</body>
+
+</html>
