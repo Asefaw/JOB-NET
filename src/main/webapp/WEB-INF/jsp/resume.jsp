@@ -51,7 +51,7 @@
                 </ul>
                 <ul class="authentication">   
                     <li class="authentication"><a href="<c:url value="index" />">Log Out</a></li>
-                    <li class="authentication"><a href="<c:url value="profile" />">${name}</a></li> 
+                    <li class="authentication"><a href="<c:url value="profile" />">${sessionScope.name}}</a></li> 
                 </ul>
             </div>
             <!-- /.navbar-collapse -->

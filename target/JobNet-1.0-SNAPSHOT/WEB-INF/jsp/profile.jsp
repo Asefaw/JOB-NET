@@ -26,6 +26,7 @@
         <spring:url value="/resources/css/heroic-features.css" var="index" />
         <link href="${index}" rel="stylesheet" />
         <link href="${bootstrap}" rel="stylesheet" /> 
+        <style> td{padding: 10px;}</style>
 </head>
 
 <body>
@@ -70,6 +71,7 @@
                     <legend><b>Applicant Information</b></legend>
                     <table> 
                         <c:forEach var="user" items="${currentUser}" varStatus="status"> 
+                            <tr><td></td><td><img  alt="" width="150" height="150"></td></tr>
                             <tr><td>First Name:</td><td><input type="text" value="${user.firstName}"></td></tr>
                             <tr><td>Last Name: </td><td><input name="lastName" type="text" value="${user.lastName}"></td></tr>  
                             <tr><td>Email Address: </td><td><input name="email" type="text" value="${user.email}"></td></tr> 

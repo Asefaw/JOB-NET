@@ -7,6 +7,7 @@ package com.jobnet;
 
 import com.jobnet.DAOs.ApplicantDAO;
 import com.jobnet.DAOs.JobDAO;
+import java.io.IOException;
 import javax.sql.DataSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -19,6 +20,7 @@ import org.springframework.web.multipart.support.StandardServletMultipartResolve
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
+import org.springframework.web.servlet.resource.DefaultServletHttpRequestHandler;
 import org.springframework.web.servlet.view.JstlView;
 import org.springframework.web.servlet.view.UrlBasedViewResolver;
 
@@ -64,15 +66,17 @@ public class Config extends WebMvcConfigurerAdapter {
 //        return new CommonsMultipartResolver();
 //    }
      
-    @Bean(name="multipartResolver")
-    public MultipartResolver getMultiPartResolver(){
-        return new StandardServletMultipartResolver();
-//        CommonsMultipartResolver multipartResolver = new CommonsMultipartResolver();
-//     
-//        multipartResolver.setMaxUploadSize(20972520);
-//        multipartResolver.setMaxInMemorySize(1048576);
-//        return multipartResolver;
+    @Bean(name = "multipartResolver")
+    public CommonsMultipartResolver createMultipartResolver() {
+        CommonsMultipartResolver resolver=new CommonsMultipartResolver();
+        resolver.setDefaultEncoding("utf-8");
+        return resolver;
     }
+    @Bean
+    public DefaultServletHttpRequestHandler createDefaultServletHttpRequestHandler() {
+        return new DefaultServletHttpRequestHandler();
+    }
+
     
     @Bean
     public JobDAO getJobDAO(){

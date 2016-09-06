@@ -65,8 +65,8 @@
         <!-- Jumbotron Header --> 
         <header class="jumbotron hero-spacer">   
             <div align="center" style="color: green">
-                <h1>${message}</h1>
-                <h1><a href="<c:url value="/profile/${sessionScope.applicantID}" />">Back</a></h1>
+                <h3>${message}</h3>
+                <h3><a href="<c:url value="/profile/${sessionScope.applicantID}" />">Back</a></h3>
             </div>
         </header>
         <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>

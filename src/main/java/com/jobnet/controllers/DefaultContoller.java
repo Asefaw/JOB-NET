@@ -9,7 +9,10 @@ import com.jobnet.DAOs.ApplicantDAO;
 import com.jobnet.DAOs.JobDAO;
 import com.jobnet.business.classes.Applicant;
 import com.jobnet.business.classes.Job;
+import java.io.IOException;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -69,11 +72,15 @@ public class DefaultContoller {
     }
     
     @RequestMapping(value="/addresume", method = RequestMethod.POST)
-    public String updateResume(HttpServletRequest request,ModelMap model, CommonsMultipartFile resume, @RequestParam("applicantId") String id ){
+    public String updateResume(ModelMap model, @RequestParam("resume") MultipartFile resume, @RequestParam("applicantId") String id ){
         if(resume != null){
-            applicantDAO.updateResume(id, resume.getBytes());
+            try {
+                applicantDAO.updateResume(id, resume.getBytes());
+            } catch (IOException ex) {
+                Logger.getLogger(DefaultContoller.class.getName()).log(Level.SEVERE, null, ex);
+            }
             model.put("message", "Profile Updated");
-        return "resume";
+            return "success";
         }else{
             model.put("error", "Error while processing form");
             return "resume";
