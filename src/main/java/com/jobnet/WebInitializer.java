@@ -12,22 +12,29 @@ import org.springframework.web.WebApplicationInitializer;
 import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;
 import org.springframework.web.multipart.MultipartResolver;
 import org.springframework.web.servlet.DispatcherServlet;
+import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
 /**
  * 
  * @author Asefaw Mekuria
  */
 
-public class WebInitializer implements WebApplicationInitializer{
+public class WebInitializer extends AbstractAnnotationConfigDispatcherServletInitializer{
+
 
     @Override
-    public void onStartup(ServletContext sc) throws ServletException {
-        AnnotationConfigWebApplicationContext ctx = new AnnotationConfigWebApplicationContext();
-        ctx.register(Config.class);
-        ctx.setServletContext(sc);
-        Dynamic servlet = sc.addServlet("dispatcher", new DispatcherServlet(ctx));
-        servlet.addMapping("/"); 
-        servlet.setLoadOnStartup(1); 
+    protected Class<?>[] getRootConfigClasses() {
+         return new Class[] { Config.class };
+    }
+
+    @Override
+    protected Class<?>[] getServletConfigClasses() {
+        return new Class[] { Config.class };
+    }
+
+    @Override
+    protected String[] getServletMappings() {
+        return new String[] { "/" };
     }
     
 }
